@@ -51,7 +51,9 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 })
 /**get data from MC**/
 app.get('/connecttoMCData', function(request, responsefromWeb) {
-	var weatherData = [
+     responsefromWeb.send("Tokenh");
+	/*
+    var weatherData = [
     {
         "keys":{
                 "SubscriberKey": "pramod.maharjan@datarati.com.au"
@@ -85,6 +87,8 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	      console.log(response);
 	      responsefromWeb.send(response);
 	  });
+      */
+    
 })
 
 app.listen(app.get('port'), function() {
