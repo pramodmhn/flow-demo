@@ -71,12 +71,12 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	    data: [
     {
         "keys":{
-                "SubscriberKey": "pramod.maharjan1@datarati.com.au"
+                "SubscriberKey": "pramod.maharjan2@datarati.com.au"
                 },
         "values":{
                 "FirstName": "Pramod",
                 "LastName": "Maharjan",
-                "EmailAddress": "pramod.maharjan1@datarati.com.au"
+                "EmailAddress": "pramod.maharjan2@datarati.com.au"
                 }
     }],
 	    headers:{
