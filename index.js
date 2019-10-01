@@ -23,8 +23,12 @@ app.get('/getweather', function(request, responsefromWeb) {
 /**MC Connect **/
 app.get('/connecttoMC', function(request, responsefromWeb) {
 	var conData = {
-    'clientId': process.env.CLIENT_ID,
-    'clientSecret': process.env.CLIENT_SECRET  
+        "grant_type": "client_credentials",
+        "client_id": process.env.CLIENT_ID,
+        "client_secret": process.env.CLIENT_SECRET,
+        "account_id": "6391294"
+    //'clientId': process.env.CLIENT_ID,
+    //'clientSecret': process.env.CLIENT_SECRET  
   	}
     console.log("test"+conData.clientId);
 	axios({
