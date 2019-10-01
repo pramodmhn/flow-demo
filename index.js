@@ -41,12 +41,29 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 	})
 	  .then(function(response) {
 	  	console.log(response);
-	  		responsefromWeb.send(response);
+	  		responsefromWeb.send(response.data.accessToken);
 	  		token = response.data.accessToken;
 	  	
 	}).catch(function (error) {
 	    console.log(error);
 	    responsefromWeb.send(error);
+	  });
+})
+/**get data from MC**/
+app.get('/connecttoMCData', function(request, responsefromWeb) {
+	
+	axios({
+	    method: 'post',
+	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:weatherdataextension/rowset',
+	    data: weatherData,
+	    headers:{
+	       'Authorization': 'Bearer ' + token,
+	       'Content-Type': 'application/json',
+	    }
+	  })
+	    .then(function(response) {
+	      console.log(response);
+	      responsefromWeb.send(response);
 	  });
 })
 
