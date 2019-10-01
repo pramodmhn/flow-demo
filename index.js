@@ -41,8 +41,8 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 	})
 	  .then(function(response) {
 	  	console.log(response);
-	  		responsefromWeb.send(response.data.accessToken);
-	  		token = response.data.accessToken;
+	  		responsefromWeb.send(response.data.access_token);
+	  		token = response.data.access_token;
 	  	
 	}).catch(function (error) {
 	    console.log(error);
