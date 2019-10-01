@@ -51,10 +51,20 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 })
 /**get data from MC**/
 app.get('/connecttoMCData', function(request, responsefromWeb) {
-	
+	weatherData = [
+    {
+        "keys":{
+                "SubscriberKey": "pramod.maharjan2+test1@datarati.com.au"
+                },
+        "values":{
+                "FirstName": "Rest1",
+                "LastName": "maha1",
+                "EmailAddress": "pramod.maharjan2@datarati.com.au"
+                }
+    }];
 	axios({
 	    method: 'post',
-	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:AB9E2BA8-B2A8-45CA-BEE7-0722977B90A6/rowset',
+	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:E5B89F58-D93E-418F-9D70-07107E624936/rowset',
 	    data: weatherData,
 	    headers:{
 	       'Authorization': 'Bearer ' + token,
