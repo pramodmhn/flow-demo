@@ -68,17 +68,17 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	axios({
 	    method: 'post',
 	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:E5B89F58-D93E-418F-9D70-07107E624936/rowset',
-	    data: 
+	    data: [
     {
         "keys":{
-                "SubscriberKey": "pramod.maharjan@datarati.com.au"
+                "SubscriberKey": "pramod.maharjan1@datarati.com.au"
                 },
         "values":{
                 "FirstName": "Pramod",
                 "LastName": "Maharjan",
-                "EmailAddress": "pramod.maharjan@datarati.com.au"
+                "EmailAddress": "pramod.maharjan1@datarati.com.au"
                 }
-    },
+    }],
 	    headers:{
 	       'Authorization': 'Bearer ' + token,
 	       'Content-Type': 'application/json',
