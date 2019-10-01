@@ -9,7 +9,7 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 
-/*app.get('/', function(request, response) {
+app.get('/', function(request, response) {
   var env = process.env.APP_ENV;
   if (env == 'staging') {
     var envName = 'staging'
@@ -21,11 +21,11 @@ app.set('views', __dirname + '/public');
   response.render('index.html', { env: envName});
 });
 
-*/
 
+/*
 app.get('/', function(request, response) {
   response.send('Hello World1!')
-})
+})*/
 
 app.get('/getweather', function(request, responsefromWeb) {
   axios.get('https://api.weather.gov/alerts?active=1&state=MN')
