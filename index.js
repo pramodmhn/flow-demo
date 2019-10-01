@@ -1,17 +1,33 @@
 var express = require('express')
 var app = express()
 const axios = require('axios');
+const CircularJSON = require('circular-json');
+var token='';
+var weatherData = [];
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
-
+require('dotenv').load();
 app.get('/', function(request, response) {
   response.send('Hello World!')
 })
-
 app.get('/getweather', function(request, responsefromWeb) {
-  axios.get('https://api.weather.gov/alerts?active=1&state=MN')
+  axios.get('https://api.weather.gov/alerts/active/area/MN')
   .then(function (response) {
+  	var datafromCall = response.data.features;
+  	for(var x=0;x<datafromCall.length;x++){
+  		var weatherItem = {
+  			"keys":{
+  				"id" : datafromCall[x].properties.id
+  			},
+  			"values":{
+					"type": datafromCall[x].type,
+					"response": datafromCall[x].properties.response,
+                "event": datafromCall[x].properties.event
+  			}
+  		}
+  		weatherData.push(weatherItem);
+  	}
     responsefromWeb.send(response.data.features);
   })
   .catch(function (error) {
@@ -22,6 +38,7 @@ app.get('/getweather', function(request, responsefromWeb) {
 
 /**MC Connect **/
 app.get('/connecttoMC', function(request, responsefromWeb) {
+    //console.log("test"+process.env.CLIENT_ID);
 	var conData = {
         "grant_type": "client_credentials",
         "client_id": process.env.CLIENT_ID,
@@ -53,7 +70,7 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 app.get('/connecttoMCData', function(request, responsefromWeb) {
      //responsefromWeb.send(token);
 	
-    var weatherData = [
+    /*var weatherData = [
     {
         "keys":{
                 "SubscriberKey": "pramod.maharjan.test@datarati.com.au"
@@ -63,11 +80,11 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
                 "LastName": "Maharjan",
                 "EmailAddress": "pramod.maharjan.test@datarati.com.au"
                 }
-    }];
+    }];*/
     
 	axios({
 	    method: 'post',
-	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:E5B89F58-D93E-418F-9D70-07107E624936/rowset',
+	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:AB9E2BA8-B2A8-45CA-BEE7-0722977B90A6/rowset',
 	    data: weatherData,
 	    headers:{
 	       'Authorization': 'Bearer ' + token,
@@ -75,10 +92,14 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	    }
 	  })
 	    .then(function(response) {
-        //var json = CircularJSON.stringify(response);
-	      //console.log(json);
-	      responsefromWeb.send(response.data);
-	  });
+       var json = CircularJSON.stringify(response);
+	      console.log(json);
+	      responsefromWeb.send(json);
+	     // responsefromWeb.send(response.data);
+	  })
+    .catch(function (error) {
+			console.log(error);
+		});
       
     
 })

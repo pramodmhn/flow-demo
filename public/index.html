@@ -1,24 +1,68 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.7.0/tachyons.css">
-		<title>Dreamforce 2018 is the best</title>
-	</head>
-	<body >
-		<div class="vh-100 w-100 flex justify-center">
-			<div class="flex flex-column items-center justify-center bg-white">
-				<h2 class="fw4 blue">Heroku Flow Demo App Pramod Maharjan</h2>
-				<p class="black ma0"> Built with Heroku by Datarati Team</p>
-                <p>This is my first test for Heroku.</p>
-				<div class="pt5">
-					<span id="env" class="white pv1 ph2 br-pill bg-light-blue"></span>
-				</div>
-			</div>
-		</div>
+<head>
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 
-		<script>
-			var env = "<%= env %>";
-			document.getElementById("env").innerHTML = env;
-		</script>
-	</body>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.css" />
+
+
+ <script type="text/javascript">
+ 	$.get( "/getweather", function( data ) {
+	 	console.log(data);
+	 	$(function () {
+		    $('#table').bootstrapTable({
+		        data: data
+		    });
+		});
+	});
+ 	function connecttoMC(){
+ 		$.get( "/connecttoMC", function( data ) {
+	 	console.log(data);
+	 	
+	});
+ 	}
+ 	function connecttoMCData(){
+ 		$.get( "/connecttoMCData", function( data ) {
+	 	console.log($.parseJSON(data));
+	});
+ 	}
+ </script>
+</head>
+
+   <body>
+    <div class="container">
+      <div class="row">
+      <div class="col">
+         <table id="table">
+        <thead>
+            <tr>
+                <th data-field="properties.id">ID</th>
+                <th data-field="type">Type</th>
+                <th data-field="properties.effective">Effective</th>
+                <th data-field="properties.expires">expires</th>
+                <th data-field="properties.certainty">Certainty</th>
+                <th data-field="properties.event">Event</th>
+                <th data-field="properties.response">Response</th>
+                <th data-field="properties.headline">Headline</th>
+                <th data-field="properties.description">Description</th>
+            </tr>
+        </thead>
+    </table>
+      </div>
+    </div>
+    <div class="row justify-content-start">
+      <div class="col-4">
+        <button class="btn-success" onclick="connecttoMC();">Connecto to MC</button>
+      </div>
+      <div class="col-4">
+       <button class="btn-primary " onclick="connecttoMCData();">Send data to MC</button>
+      </div>
+    </div>
+    </div>
+   </body>
 </html>
