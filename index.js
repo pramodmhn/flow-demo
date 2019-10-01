@@ -85,8 +85,9 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	    }
 	  })
 	    .then(function(response) {
-	      console.log(response.data);
-	      responsefromWeb.send(response.data);
+        var json = CircularJSON.stringify(response);
+	      console.log(json);
+	      responsefromWeb.send(json);
 	  });
       
     
