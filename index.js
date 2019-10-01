@@ -51,7 +51,7 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 })
 /**get data from MC**/
 app.get('/connecttoMCData', function(request, responsefromWeb) {
-     responsefromWeb.send("Tokenh");
+     responsefromWeb.send("Token"+token);
 	/*
     var weatherData = [
     {
