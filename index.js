@@ -41,7 +41,7 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 	})
 	  .then(function(response) {
 	  	console.log(response);
-	  		responsefromWeb.send(response.data.access_token);
+	  		responsefromWeb.send('Authorization Sent');
 	  		token = response.data.access_token;
 	  	
 	}).catch(function (error) {
@@ -68,17 +68,7 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	axios({
 	    method: 'post',
 	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:E5B89F58-D93E-418F-9D70-07107E624936/rowset',
-	    data: [
-    {
-        "keys":{
-                "SubscriberKey": "pramod.maharjan2@datarati.com.au"
-                },
-        "values":{
-                "FirstName": "Pramod",
-                "LastName": "Maharjan",
-                "EmailAddress": "pramod.maharjan2@datarati.com.au"
-                }
-    }],
+	    data: weatherData,
 	    headers:{
 	       'Authorization': 'Bearer ' + token,
 	       'Content-Type': 'application/json',
@@ -87,7 +77,7 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	    .then(function(response) {
         var json = CircularJSON.stringify(response);
 	      console.log(json);
-	      responsefromWeb.send(json);
+	      responsefromWeb.send(response.data);
 	  });
       
     
