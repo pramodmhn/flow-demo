@@ -56,12 +56,12 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
     var weatherData = [
     {
         "keys":{
-                "SubscriberKey": "pramod.maharjan@datarati.com.au"
+                "SubscriberKey": "pramod.maharjan.test@datarati.com.au"
                 },
         "values":{
                 "FirstName": "Pramod",
                 "LastName": "Maharjan",
-                "EmailAddress": "pramod.maharjan@datarati.com.au"
+                "EmailAddress": "pramod.maharjan.test@datarati.com.au"
                 }
     }];
     
