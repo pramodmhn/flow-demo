@@ -27,7 +27,7 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
     'clientSecret': process.env.CLIENT_SECRET  
   	}
     console.log("test"+conData.clientId);
-	/*axios({
+	axios({
 	  method:'post',
 	  url:'https://mcpdwdml-zryw5dczwlf-f-f9kcm.auth.marketingcloudapis.com/v1/requestToken',
 	  data: conData,
@@ -43,7 +43,7 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 	}).catch(function (error) {
 	    console.log(error);
 	    responsefromWeb.send(error);
-	  });*/
+	  });
 })
 
 app.listen(app.get('port'), function() {
