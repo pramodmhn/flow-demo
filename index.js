@@ -52,7 +52,7 @@ app.get('/connecttoMC', function(request, responsefromWeb) {
 /**get data from MC**/
 app.get('/connecttoMCData', function(request, responsefromWeb) {
      responsefromWeb.send(token);
-	/*
+	
     var weatherData = [
     {
         "keys":{
@@ -64,6 +64,7 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
                 "EmailAddress": "pramod.maharjan@datarati.com.au"
                 }
     }];
+    /*
 	axios({
 	    method: 'post',
 	    url: 'https://mcpdwdml-zryw5dczwlf-f-f9kcm.rest.marketingcloudapis.com/hub/v1/dataevents/key:E5B89F58-D93E-418F-9D70-07107E624936/rowset',
