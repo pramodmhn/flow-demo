@@ -85,8 +85,8 @@ app.get('/connecttoMCData', function(request, responsefromWeb) {
 	    }
 	  })
 	    .then(function(response) {
-	      console.log(response.data.keys);
-	      responsefromWeb.send(response.data.keys);
+	      console.log(response.data);
+	      responsefromWeb.send(response.data);
 	  });
       
     
